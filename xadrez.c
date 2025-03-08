@@ -5,6 +5,7 @@
 Torre -> 5 casas para a direita : Direita, Direita, Direita, Direita, Direita.
 Bispo -> 5 casas na diagonal cima a direita: (Direita, Cima), (Direita, Cima), (Direita, Cima), (Direita, Cima), (Direita, Cima).
 Rainha -> 8 casas para a esquerda: Esquerda, Esquerda, Esquerda, Esquerda, Esquerda, Esquerda, Esquerda, Esquerda.
+Cavalo -> Fazer 1 movimento
 */
 
 int main() {
@@ -18,7 +19,9 @@ int main() {
     // Declarando variaveis
     int rookMov = 0;
     int queenMov = 0;
-    int bishopMov = 0;
+    int bishopMov = 1;
+    int horseMovIni = 0;
+    int horseMovSecond = 0;
 
     // Iniciando as movimentações
     printf("\n1. Torre:\n");
@@ -34,7 +37,7 @@ int main() {
     
     printf("2. Bispo: \n");
     
-    for (bishopMov; bishopMov < 5; bishopMov++)
+    for (bishopMov; bishopMov <= 5; bishopMov++)
     {
         /*Vai rodar 5 vezes*/
         printf("(Cima e Direita) x%d\n", bishopMov);
@@ -52,6 +55,26 @@ int main() {
     } while (queenMov < 8);
     
     printf("Finalizado a movimentação da rainha...\n");
+    
+
+    printf("4. Cavalo: \n");
+
+    // Loop Externo
+    while (horseMovIni == 0)
+    {
+        //loop interno
+        for (horseMovSecond; horseMovSecond <= 1; horseMovSecond++)
+        {
+            // 2x para Cima
+            printf("Cima\n");
+        }
+        // 1x para o lado
+        printf("Direita\n");
+        horseMovIni++;
+    }
+
+    printf("\nMovimentos finalizados...\n");
+
     
     //Finalização
     return 0;
