@@ -2,11 +2,60 @@
 
 // Cria um sistema qu simula a movimentação de peças de xadrez
 /*
+Casos de Recursividade
 Torre -> 5 casas para a direita : Direita, Direita, Direita, Direita, Direita.
-Bispo -> 5 casas na diagonal cima a direita: (Direita, Cima), (Direita, Cima), (Direita, Cima), (Direita, Cima), (Direita, Cima).
 Rainha -> 8 casas para a esquerda: Esquerda, Esquerda, Esquerda, Esquerda, Esquerda, Esquerda, Esquerda, Esquerda.
-Cavalo -> Fazer 1 movimento
+
+Casos de Loops Complexos e Aninhados
+Bispo -> 5 casas na diagonal cima a direita: Cima, Direita, Cima, Direita, Cima, Direita, Cima, Direita, Cima, Direita.
+Cavalo -> Fazer 1 movimento (Cima, Cima, Direita)
 */
+
+
+// Declarando as Funções
+
+void movRook(int squares){ // Funciona com recursividade simples
+    if (squares > 0){
+        printf("Direita\n");
+        movRook(squares - 1);
+    }
+}
+
+void movQueen(int squares){ // Funciona com recursividade simples
+    if (squares > 0){
+        printf("Esquerda\n");
+        movQueen(squares - 1);
+    }
+}
+
+void movHorse(int squares){
+    // Loop Externo definido, excecutará quantas casas foi solicitado, no caso: 1
+    for (int horseMovExtern = 0; horseMovExtern < squares; horseMovExtern++)
+    {
+        // Loop interno, definido 2 variaveis de controle.
+        // Uma de repetição e outra de limite, para executar até 2 vezes 
+        for (int horseMovIntern = 0, MAX_horseMovIntern = 2; horseMovIntern < MAX_horseMovIntern; horseMovIntern++)
+        {
+            printf("Cima\n");
+        }
+        printf("Direita\n");
+    }
+    
+}
+
+void movBishop(int squares){
+    // Loop Externo definido, excecutará quantas casas foi solicitado.
+    for (int bishopMovExtern = 0; bishopMovExtern < squares; bishopMovExtern++)
+    {
+        // Loop interno, executa 1 vez fixo.
+        for (int bishopMovIntern = 0; bishopMovIntern < 1; bishopMovIntern++)
+        {
+            printf("Direita\n");
+        }
+        printf("Cima\n");
+    }
+    
+}
 
 int main() {
     //Inicializando
@@ -14,67 +63,33 @@ int main() {
     printf("Simutaion of Chess\n");
     printf("====================================\n");
 
-    printf("\nAs peças são: \n1. Torre \n2. Bispo \n3. Rainha\nApresentando as movimentações:\n");
-
-    // Declarando variaveis
-    int rookMov = 0;
-    int queenMov = 0;
-    int bishopMov = 1;
-    int horseMovIni = 0;
-    int horseMovSecond = 0;
+    printf("\nAs peças são: \n1. Torre \n2. Bispo \n3. Rainha\n4. Cavalo \nApresentando as movimentações:\n");
 
     // Iniciando as movimentações
     printf("\n1. Torre:\n");
 
-    while (rookMov < 5)
-    {
-        // Rodar 5x e para
-        rookMov++;
-        printf("Direta x%d\n", rookMov);
-    }
+    movRook(5);
 
     printf("Finalizado a movimentação da torre...\n");
     
     printf("2. Bispo: \n");
     
-    for (bishopMov; bishopMov <= 5; bishopMov++)
-    {
-        /*Vai rodar 5 vezes*/
-        printf("(Cima e Direita) x%d\n", bishopMov);
-    }
+    movBishop(5);
     
     printf("Finalizado a movimentação do bispo...\n");
     
     printf("3. Rainha: \n");
     
-    do
-    {
-        // Rodar 8x
-        queenMov++;
-        printf("Esquerda x%d\n", queenMov);
-    } while (queenMov < 8);
+    movQueen(8);
     
     printf("Finalizado a movimentação da rainha...\n");
     
 
     printf("4. Cavalo: \n");
 
-    // Loop Externo
-    while (horseMovIni == 0)
-    {
-        //loop interno
-        for (horseMovSecond; horseMovSecond <= 1; horseMovSecond++)
-        {
-            // 2x para Cima
-            printf("Cima\n");
-        }
-        // 1x para o lado
-        printf("Direita\n");
-        horseMovIni++;
-    }
+    movHorse(1);
 
     printf("\nMovimentos finalizados...\n");
-
     
     //Finalização
     return 0;
